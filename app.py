@@ -29,7 +29,7 @@ def index():
 # facebook authentication
 
 FACEBOOK_APP_ID = '145630202496114'
-FACEBOOK_APP_SECRET = ''
+FACEBOOK_APP_SECRET = '94855358208309d08a84b3f3a130c792'
 
 oauth = OAuth()
 

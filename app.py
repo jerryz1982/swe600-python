@@ -8,6 +8,7 @@ app = Flask(__name__)
 app.config.update(
     DEBUG = True,
 )
+app.config["SECRET_KEY"] = 'swe600'
 
 # controllers
 @app.route('/favicon.ico')

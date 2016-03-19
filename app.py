@@ -66,7 +66,10 @@ def facebook_authorized(resp):
 
     session['logged_in'] = True
     session['facebook_token'] = (resp['access_token'], '')
-
+    data = facebook.get('/me').data
+    if 'id' in data and 'name' in data:
+        session['user_id'] = data['id']
+        session['user_name'] = data['name']
     return redirect(next_url)
 
 @app.route("/logout")

@@ -4,6 +4,6 @@
 {% if not session.logged_in %}
      <p>You are not logged in.</p>
 {% else %}
-     <p>You are logged in.</p>
+     <p>You are logged in. Welcome, {{ session.user_name }}!</p>
 {% endif %}
 {% endblock %}

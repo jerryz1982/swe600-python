@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block title %} - Home{% endblock %}
 {% block content %}
-{% if not session.logged_in %}
-     <p>You are not logged in.</p>
-{% else %}
-     <p>You are logged in.</p>
-{% endif %}
+   {% if not session.logged_in %}
+    <li><a href="/facebook_login">Login or Signup</a></li>
+    {% else %}
+    <li><a href="/logout">Logout</a></li>
+    {% endif %}
 {% endblock %}

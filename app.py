@@ -74,6 +74,23 @@ def logout():
     pop_login_session()
     return redirect(url_for('index'))
 
+
+#----------------------------------------
+# database
+#----------------------------------------
+
+from mongoengine import connect
+from flask.ext.mongoengine import MongoEngine
+
+DB_NAME = 'facebook'
+DB_USERNAME = 'swe600'
+DB_PASSWORD = 'swe600'
+DB_HOST_ADDRESS = 'ds061385.mlab.com:61385/facebook'
+
+app.config["MONGODB_DB"] = DB_NAME
+connect(DB_NAME, host='mongodb://' + DB_USERNAME + ':' + DB_PASSWORD + '@' + DB_HOST_ADDRESS)
+db = MongoEngine(app)
+
 # launch
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

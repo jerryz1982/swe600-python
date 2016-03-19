@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block title %} - Home{% endblock %}
 {% block content %}
-<ul class="nav pull-right">
-   {% if not session.logged_in %}
-    <li><a href="/facebook_login">Login or Signup</a></li>
-    {% else %}
-    <li><a href="/logout">Logout</a></li>
-    {% endif %}
-</ul>
+{% if not session.logged_in %}
+     <p>You are not logged in.</p>
+{% else %}
+     <p>You are logged in.</p>
+{% endif %}
 {% endblock %}

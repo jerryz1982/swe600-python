@@ -27,14 +27,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">SuperApp</a>
+        <a class="navbar-brand" href="/">SWE600 Midterm App</a>
         <div class="nav-collapse">
           {% block navbar_right %}
           <ul class="nav navbar-nav pull-right">
             {% if not session.logged_in %}
-              <li><a href="#">Login or Signup</a></li>
+            <li><a href="/facebook_login">Login or Signup</a></li>
             {% else %}
-              <li><a href="#">Logout</a></li>
+            <li><a href="/logout">Logout</a></li>
             {% endif %}
           </ul>
           {% endblock %}
@@ -50,7 +50,7 @@
         <hr>
         {% block footer %}
         <footer class="footer">
-            <p>&copy; SuperApp</p>
+            <p>&copy; SWE600</p>
         </footer>
         {% endblock %}
     </div>

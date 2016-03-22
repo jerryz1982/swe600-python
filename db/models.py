@@ -19,7 +19,8 @@ db = MongoEngine(app)
 
 class User(db.DynamicDocument):
     created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
-    id = db.IntField(primary_key=True, required=True, unique=True)
+    facebook_id = db.StringField(primary_key=True, required=True, unique=True)
+    #id = db.StringField(required=True, unique=True)
     name = db.StringField(max_length=255, required=True)
     first_name = db.StringField(max_length=255, required=True)
     last_name = db.StringField(max_length=255, required=True)
@@ -32,6 +33,7 @@ class User(db.DynamicDocument):
         return self.name
 
     meta = {
-        'indexes' : ['-created_at', 'facebook_id'],
+        'indexes' : ['-created_at', 'facebook_id', 'first_name', 'last_name',
+                     'email', 'gender', 'timezone'],
         'ordering' : ['-created_at']
     }

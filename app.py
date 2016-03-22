@@ -81,8 +81,11 @@ def facebook_authorized(resp):
         session[i] = data[i]
         if i == 'friends':
             user_data['friends_count'] = data[i]['summary']['total_count']
+        elif i == 'id':
+            user_data['facebook_id'] = data[i]
         else:
             user_data[i] = data[i]
+    print user_data
     save_user_to_db(user_data)
     return redirect(next_url)
 
@@ -94,7 +97,7 @@ def logout():
 def get_user_from_db(facebook_id):
     if not facebook_id:
         raise ValueError()
-    users_found = models.User.objects(id=facebook_id)
+    users_found = models.User.objects(facebook_id=facebook_id)
     if len(users_found) == 1:
         return users_found[0]
     elif len(users_found) == 0:
@@ -103,7 +106,7 @@ def get_user_from_db(facebook_id):
         raise Exception('Database Integrity Error')
 
 def save_user_to_db(user_data):
-    users_found = models.User.objects(id=user_data['id'])
+    users_found = models.User.objects(facebook_id=user_data['facebook_id'])
     if users_found:
         update_kwargs = {}
         for k,v in user_data.iteritems():

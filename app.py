@@ -73,7 +73,6 @@ def facebook_authorized(resp):
     session['logged_in'] = True
     session['facebook_token'] = (resp['access_token'], '')
     data = facebook.get('/me?fields=id,name,first_name,last_name,gender,timezone,verified,friends,email').data
-    print data
     required_fields = ['id', 'name', 'first_name', 'last_name', 'gender',
                        'timezone', 'verified', 'friends', 'email']
     user_data = dict()
@@ -85,7 +84,6 @@ def facebook_authorized(resp):
             user_data['facebook_id'] = data[i]
         else:
             user_data[i] = data[i]
-    print user_data
     save_user_to_db(user_data)
     whole_user_data = get_user_from_db(session['id'])
     session['major'] = whole_user_data.major
@@ -101,6 +99,19 @@ def upload_extra_user_data():
     save_user_to_db(extra_userdata)
     session['major'] = extra_userdata["major"]
     return redirect("/")
+
+@app.route("/get_userdata_by_email")
+def get_userdata_by_email():
+    email = request.args.get('email')
+    users_found = models.User.objects(email=email)
+    if len(users_found) == 1:
+        r = users_found[0]
+        return render_template('result.html', first_name=r['first_name'],
+                               last_name=r['last_name'], gender=r['gender'],
+                               timezone=r['timezone'], major=r['major'],
+                               friends_count=r['friends_count'], email=email)
+    elif len(users_found) == 0:
+        return 'No users found'
 
 @app.route("/logout")
 def logout():

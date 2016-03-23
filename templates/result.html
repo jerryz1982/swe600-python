@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} - Result{% endblock %}
+{% block content %}
+     <table class="w3-table-all" style="width:100%">
+     <tr>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Friend Count</th>
+        <th>Time Zone</th>
+        <th>Major</th>
+     </tr>
+     <tr>
+        <td>{{ email }}</td>
+        <td>{{ first_name }}</td>
+        <td>{{ last_name }}</td>
+        <td>{{ gender }}</td>
+        <td>{{ friends_count }}</td>
+        <td>{{ timezone }}</td>
+        <td>{{ major }}</td>
+     </tr>
+     </table>
+{% endblock %}

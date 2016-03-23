@@ -87,7 +87,20 @@ def facebook_authorized(resp):
             user_data[i] = data[i]
     print user_data
     save_user_to_db(user_data)
+    whole_user_data = get_user_from_db(session['id'])
+    session['major'] = whole_user_data.major
+    next_url = request.args.get('next') or url_for('index')
     return redirect(next_url)
+
+@app.route("/extra_userdata", methods=["POST"])
+def upload_extra_user_data():
+    print(request.form["extra_userdata"])
+    extra_userdata = {}
+    extra_userdata["major"] = request.form["extra_userdata"]
+    extra_userdata["facebook_id"] = session["id"]
+    save_user_to_db(extra_userdata)
+    session['major'] = extra_userdata["major"]
+    return redirect("/")
 
 @app.route("/logout")
 def logout():

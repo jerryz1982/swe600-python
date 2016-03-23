@@ -13,6 +13,7 @@
         <th>Gender</th>
 	<th>Friend Count</th>
         <th>Time Zone</th>
+        <th>Major</th>
      </tr>
      <tr>
      	<td>{{ session.email }}</td>
@@ -21,8 +22,12 @@
         <td>{{ session.gender }}</td>
 	<td>{{ session.friends.summary.total_count }}</td>
         <td>{{ session.timezone }}</td>
+        <td>{{ session.major }}</td>
      </tr>
      </table>
-
+     <form action="extra_userdata" method="post">
+         Major: <input type="text" name="extra_userdata">
+         <input type="submit" value="Submit" action="/">
+     </form>
 {% endif %}
 {% endblock %}

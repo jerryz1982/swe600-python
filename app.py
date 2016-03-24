@@ -86,7 +86,8 @@ def facebook_authorized(resp):
             user_data[i] = data[i]
     save_user_to_db(user_data)
     whole_user_data = get_user_from_db(session['id'])
-    session['major'] = whole_user_data.major
+    if 'major' in whole_user_data:
+        session['major'] = whole_user_data.major
     next_url = request.args.get('next') or url_for('index')
     return redirect(next_url)
 

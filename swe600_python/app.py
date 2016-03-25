@@ -101,16 +101,24 @@ def upload_extra_user_data():
     session['major'] = extra_userdata["major"]
     return redirect("/")
 
-@app.route("/get_userdata_by_email")
-def get_userdata_by_email():
-    email = request.args.get('email')
-    users_found = models.User.objects(email=email)
-    if len(users_found) == 1:
-        r = users_found[0]
-        return render_template('result.html', first_name=r['first_name'],
-                               last_name=r['last_name'], gender=r['gender'],
-                               timezone=r['timezone'], major=r['major'],
-                               friends_count=r['friends_count'], email=email)
+@app.route("/get_userdata")
+def get_userdata():
+    search_by = request.args.get('by')
+    search_str = request.args.get('string')
+    if search_by == 'email':
+        users_found = models.User.objects(email=search_str)
+    elif search_by == 'last_name':
+        users_found = models.User.objects(last_name=search_str)
+    elif search_by == 'first_name':
+        users_found = models.User.objects(first_name=search_str)
+    elif search_by == 'major':
+        users_found = models.User.objects(major=search_str)
+    elif search_by == 'gender':
+        users_found = models.User.objects(gender=search_str)
+    else:
+        return 'Invalid search criteria'
+    if len(users_found) > 0:
+        return render_template('result.html', users_found=users_found)
     elif len(users_found) == 0:
         return 'No users found'
 

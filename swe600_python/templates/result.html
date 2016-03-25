@@ -11,14 +11,16 @@
         <th>Time Zone</th>
         <th>Major</th>
      </tr>
-     <tr>
-        <td>{{ email }}</td>
-        <td>{{ first_name }}</td>
-        <td>{{ last_name }}</td>
-        <td>{{ gender }}</td>
-        <td>{{ friends_count }}</td>
-        <td>{{ timezone }}</td>
-        <td>{{ major }}</td>
-     </tr>
+     {% for user in users_found %}
+       <tr>
+          <td>{{ user['email'] }}</td>
+          <td>{{ user['first_name'] }}</td>
+          <td>{{ user['last_name'] }}</td>
+          <td>{{ user['gender'] }}</td>
+          <td>{{ user['friends_count'] }}</td>
+          <td>{{ user['timezone'] }}</td>
+          <td>{{ user['major'] }}</td>
+       </tr>
+     {% endfor %}
      </table>
 {% endblock %}

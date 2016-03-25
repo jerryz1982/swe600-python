@@ -1,1 +1,1 @@
-web: python app.py
+web: python swe600_python/app.py

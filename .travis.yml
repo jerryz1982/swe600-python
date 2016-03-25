@@ -2,6 +2,6 @@ language: python
 python:
  - "2.7"
 # command to install dependencies
-install: "pip install -r requirements.txt"
+install: "pip install -U tox"
 # command to run tests
-script: exit 0
+script: tox -epy27

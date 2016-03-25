@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: swe600-python
+Version: 0.0.1.dev19
+Summary: mid term project
+Home-page: UNKNOWN
+Author: Xinyu Zhao
+Author-email: xyzjerry@gmail.com
+License: UNKNOWN
+Description: # SWE600 Midterm Project
+        
+        [![Build Status](https://travis-ci.org/jerryz1982/swe600-python.svg?branch=master)](https://travis-ci.org/jerryz1982/swe600-python)
+        
+        
+Platform: UNKNOWN
+Classifier: Environment :: Python
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 2.6

@@ -1,4 +1,6 @@
 *.pyc
+.testrepository
+.tox
 venv
 *~
 .DS_Store
